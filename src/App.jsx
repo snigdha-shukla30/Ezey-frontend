@@ -1,23 +1,11 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import EzeyLogin from "./pages/Login";
+// src/App.jsx
+import React from "react";
+import Login from "./pages/Login.jsx";
 
-
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/login" element={<EzeyLogin />} />
-        
-
-      </Routes>
-    </Router>
+    <div className="min-h-screen flex items-center justify-center bg-[#e9edf5]">
+      <Login />
+    </div>
   );
 }
-
-export default App
