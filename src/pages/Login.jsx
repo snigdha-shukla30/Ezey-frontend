@@ -165,10 +165,10 @@ const AuthPage = () => {
                       <>
                         New user ?{' '}
                         <button
-                          onClick={() => setIsSignUp(true)}
+                          onClick={() => (window.location = '/signup')}
                           className="font-semibold text-[#3d8bb5] hover:text-[#2a6a8a]"
                         >
-                          Sign In
+                          Sign Up
                         </button>
                       </>
                     )}

@@ -1,11 +1,21 @@
 // src/App.jsx
 import React from "react";
-import Login from "./pages/Login.jsx";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-export default function App() {
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+
+function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#e9edf5]">
-      <Login />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/signup" replace />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/signup" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default App;
