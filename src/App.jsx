@@ -1,23 +1,21 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import EzeyLogin from "./pages/Login";
+// src/App.jsx
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/login" element={<EzeyLogin />} />
-        
-
+        <Route path="/" element={<Navigate to="/signup" replace />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/signup" replace />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;
