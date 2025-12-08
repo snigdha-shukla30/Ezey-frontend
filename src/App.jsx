@@ -4,7 +4,18 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import EzeyLogin from "./pages/Login";
+
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
+// import EzeyERPPage from "./pages/DataFilling/ERPentry";
+// import EzeyLoadchartPage from "./pages/DataFilling/LoadsetEntry";
+import Splash from "./pages/Splash/splash";
+// import EzeyManualEntryPage from "./pages/DataFilling/ManualEntry";
+
+import Dashboard from "./pages/Dashboard/Dashboard";
+import ImportSummary from "./pages/ImportSummary/ImportSummary";
+import EzeyForm from "./pages/DataFilling/EzeyForm";
+
 
 
 function App() {
@@ -12,8 +23,18 @@ function App() {
     <Router>
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/login" element={<EzeyLogin />} />
-        
+        <Route path="/" element={<Navigate to="/splash" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/form" element={< EzeyForm />} /> 
+        {/* <Route path="/erpentry" element={<EzeyERPPage />} />
+        <Route path="/loadsetentry" element={<EzeyLoadchartPage />} /> */}
+        <Route path="/splash" element={<Splash />} />
+        {/* <Route path="/manualentry" element={<EzeyManualEntryPage />} />  */}
+        <Route path="/import" element={< ImportSummary />} /> 
+        <Route path="/dashboard" element={< Dashboard />} /> 
+
+
 
       </Routes>
     </Router>
