@@ -15,6 +15,7 @@ import Splash from "./pages/Splash/splash";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ImportSummary from "./pages/ImportSummary/ImportSummary";
 import EzeyForm from "./pages/DataFilling/EzeyForm";
+import DataEntry from "./pages/DataEntry/DataEntry";
 
 
 
@@ -33,6 +34,8 @@ function App() {
         {/* <Route path="/manualentry" element={<EzeyManualEntryPage />} />  */}
         <Route path="/import" element={< ImportSummary />} /> 
         <Route path="/dashboard" element={< Dashboard />} /> 
+        <Route path="/dataentry" element={< DataEntry />} /> 
+
 
 
 
