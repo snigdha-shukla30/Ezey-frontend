@@ -1,206 +1,380 @@
-import { useState } from 'react';
-import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
-import bgImg from '../../assets/images/bg.jpg';
-import pic1 from '../../assets/images/pic1.jpg';
-import pic2 from '../../assets/images/pic2.jpg';
-import pic3 from '../../assets/images/pic3.jpg';
-import { loginAPI } from '../../api/api';
-import { useNavigate } from 'react-router-dom'; // ✅ Added
+import LeftAuthLayout from "../../Components/auth/LeftAuthLayout";
+import RightAuthSlider from "../../Components/auth/RightAuthSlider";
+import LoginForm from "../../Components/auth/LoginForm";
 
-const Login = () => {
-  const navigate = useNavigate(); // ✅ Added
-
-  const [isSignUp, setIsSignUp] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (loading) return;
-
-    if (!email || !password) {
-      alert('Please enter email and password');
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const data = await loginAPI(email, password);
-      console.log('Login response:', data);
-
-      if (data.success) {
-        alert('Login successful!');
-
-        // 👉 Redirect user to form page
-       navigate("/form"); // 🔥 MAIN CHANGE
-      } else {
-        alert(data.message || 'Login failed');
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      alert('Something went wrong, please try again');
-    } finally {
-      setLoading(false);
-    }
-  };
-
+const EzeyLoginPage = () => {
   return (
-    <div className="min-h-screen w-full bg-[#edf3fb] flex items-center justify-center px-4 py-6">
-      <div className="w-full max-w-6xl min-h-[540px] rounded-[28px] border border-[#c2d6eb] bg-white shadow-[0_18px_60px_rgba(15,23,42,0.18)] overflow-hidden grid grid-cols-1 lg:grid-cols-2">
-        
-        {/* LEFT CARD */}
-        <div className="bg-[#f8fbff] flex flex-col px-12 py-8">
-          <div className="relative flex-1">
-            <div className="relative h-full flex flex-col">
+    <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center px-6">
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+        <LeftAuthLayout>
+          <LoginForm />
+        </LeftAuthLayout>
 
-              {/* Brand */}
-              <div className="text-sm font-semibold tracking-[0.2em] text-[#5d7a90] mb-8">
-                Ezey
-              </div>
-
-              {/* Heading */}
-              <div className="mb-6 text-center">
-                <h1 className="text-[28px] font-semibold text-[#2c4a5e] leading-tight mb-2">
-                  Welcome to Ezey
-                </h1>
-                <p className="text-[13px] text-[#7a92a5] leading-relaxed">
-                  Start your experience with Ezey by signing in <br /> or signing up
-                </p>
-              </div>
-
-              {/* FORM */}
-              <div className="flex-1 flex flex-col">
-                <div className="w-full max-w-[420px] mx-auto">
-
-                  {/* Email */}
-                  <div className="mb-4">
-                    <label className="block text-[13px] font-medium text-[#3d5a6f] mb-2">
-                      Email Address / Institution Id
-                    </label>
-                    <div className="flex items-center gap-3 rounded-xl border border-[#cfdde9] bg-white px-4 py-3">
-                      <Mail className="w-[18px] h-[18px] text-[#9fb5c7]" />
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter Email Address or Institution Id"
-                        className="flex-1 bg-transparent outline-none text-[13px] text-[#2c4a5e] placeholder:text-[#b5c4d1]"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Password */}
-                  <div className="mb-1">
-                    <label className="block text-[13px] font-medium text-[#3d5a6f] mb-2">
-                      {isSignUp ? 'Create Password*' : 'Password*'}
-                    </label>
-                    <div className="flex items-center gap-3 rounded-xl border border-[#cfdde9] bg-white px-4 py-3">
-                      <Lock className="w-[18px] h-[18px] text-[#9fb5c7]" />
-                      <input
-                        type={passwordVisible ? 'text' : 'password'}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter Password"
-                        className="flex-1 bg-transparent outline-none text-[13px] text-[#2c4a5e]"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setPasswordVisible(!passwordVisible)}
-                        className="p-0.5 text-[#9fb5c7] hover:text-[#6b8599]"
-                      >
-                        {passwordVisible ? <EyeOff /> : <Eye />}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Forgot password */}
-                  {!isSignUp && (
-                    <div className="flex justify-end mb-6">
-                      <button className="text-[12px] text-[#3d8bb5] hover:text-[#2a6a8a]">
-                        Forgot Password?
-                      </button>
-                    </div>
-                  )}
-
-                  {/* Button + toggle */}
-                  <div className="w-full max-w-[420px] mx-auto mt-2 flex flex-col items-center">
-                    <div className="mb-3 text-[11px] text-[#8599ab]">
-                      {isSignUp ? (
-                        <>
-                          Already a user?{' '}
-                          <button
-                            onClick={() => setIsSignUp(false)}
-                            className="font-semibold text-[#3d8bb5]"
-                          >
-                            Sign In
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          New user ?{' '}
-                          <button
-                            onClick={() => setIsSignUp(true)}
-                            className="font-semibold text-[#3d8bb5]"
-                          >
-                            Sign Up
-                          </button>
-                        </>
-                      )}
-                    </div>
-
-                    <button
-                      onClick={handleSubmit}
-                      disabled={loading}
-                      className="w-[240px] rounded-full bg-gradient-to-b from-[#3d98c4] to-[#1e6f99] py-3.5 text-[15px] font-semibold text-white shadow-[0_12px_28px_rgba(30,111,153,0.5)] disabled:opacity-70"
-                    >
-                      {loading ? 'Processing...' : isSignUp ? 'Sign Up' : 'Sign In'}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT SIDE */}
-        <div className="relative flex items-center justify-center px-6 md:px-10 py-8 md:py-10 bg-[#021726]">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-90"
-            style={{
-              backgroundImage: `url(${bgImg})`,
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#032b3f]/40 via-transparent to-[#010810]/70" />
-          <div className="relative w-full h-full max-w-md min-height-[420px] flex flex-col items-center justify-center">
-            <div className="absolute top-[10%] left-[14%] w-40 h-40 rounded-[18px] overflow-hidden shadow">
-              <img src={pic1} className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute top-[28%] left-[46%] w-40 h-40 rounded-[18px] overflow-hidden shadow">
-              <img src={pic2} className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute top-[52%] left-[20%] w-40 h-40 rounded-[18px] overflow-hidden shadow">
-              <img src={pic3} className="w-full h-full object-cover" />
-            </div>
-            <p className="absolute bottom-7 left-1/2 -translate-x-1/2 w-[82%] text-center text-[13px] text-white/70">
-              Manage classrooms, subjects, faculty, constraints & generate
-              timetables effortlessly with Ezey.
-            </p>
-          </div>
-        </div>
-
+        <RightAuthSlider />
       </div>
     </div>
   );
 };
 
-export default Login;
+export default EzeyLoginPage;
 
 
 
 
 
 
+
+
+// import React, { useState, useEffect } from "react";
+// import { Eye, EyeOff } from "lucide-react";
+
+// const EzeyLoginPage = () => {
+//   const [showPassword, setShowPassword] = useState(false);
+//   const [currentSlide, setCurrentSlide] = useState(0);
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+
+//   const slides = [
+//     {
+//       images: ["triple"],
+//       text: "With Ezey, your timing manual timetable arrangement becomes fully automated!",
+//     },
+//     {
+//       images: ["team"],
+//       text: "Collaborate seamlessly with your team",
+//     },
+//     {
+//       images: ["hourglass"],
+//       text: "Save time with automated scheduling",
+//     },
+//   ];
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentSlide((prev) => (prev + 1) % slides.length);
+//     }, 4000);
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   const handleSubmit = () => {
+//     console.log("Login:", email, password);
+//   };
+
+//   return (
+//     <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center px-6">
+//       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+//         {/* ================= LEFT CARD ================= */}
+//         <div className="bg-white rounded-3xl shadow-sm p-12 flex items-center justify-center">
+//           <div className="w-full max-w-md">
+//             <div className="mb-10">
+//               <p
+//                 className="text-sm text-[#4A9FB5] mb-8"
+//                 style={{
+//                   fontFamily: "Mulish, sans-serif",
+//                 }}
+//               >
+//                 Ezey
+//               </p>
+//               <h1
+//                 className="text-[36px] font-bold text-[#265768] mb-3"
+//                 style={{
+//                   fontFamily: "Playfair Display, serif",
+//                   fontWeight: 700,
+//                   lineHeight: "1.2",
+//                   textAlign: "center",
+//                 }}
+//               >
+//                 Welcome to Ezey
+//               </h1>
+//               <p
+//                 className="text-[#7A8C94] text-[15px] mb-2"
+//                 style={{
+//                   fontFamily: "Mulish, sans-serif",
+//                   fontWeight: 400,
+//                   lineHeight: "1.5",
+//                   textAlign: "center",
+//                 }}
+//               >
+//                 Start your experience with Ezey by signing in
+//               </p>
+//               <p
+//                 className="text-[#7A8C94] text-[15px]"
+//                 style={{
+//                   fontFamily: "Mulish, sans-serif",
+//                   fontWeight: 400,
+//                   lineHeight: "1.5",
+//                   textAlign: "center",
+//                 }}
+//               >
+//                 or signing up
+//               </p>
+//             </div>
+//             {/* Email */}
+//             <div className="mb-5">
+//               <label
+//                 className="text-[14px] font-semibold text-[#265768] mb-2 block"
+//                 style={{
+//                   fontFamily: "Mulish, sans-serif",
+//                   fontWeight: 600,
+//                   textAlign: "left",
+//                 }}
+//               >
+//                 Email Address / Institution Id
+//               </label>
+//               <div
+//                 className="relative"
+//                 style={{
+//                   height: "48px",
+//                 }}
+//               >
+//                 <span
+//                   className="absolute left-4 top-1/2 -translate-y-1/2"
+//                   style={{
+//                     width: "20px",
+//                     height: "20px",
+//                     color: "#A0AEC0",
+//                   }}
+//                 >
+//                   <svg
+//                     width="20"
+//                     height="20"
+//                     viewBox="0 0 24 24"
+//                     fill="none"
+//                     stroke="currentColor"
+//                     strokeWidth="2"
+//                   >
+//                     <rect x="3" y="5" width="18" height="14" rx="2" />
+//                     <path d="M3 7l9 6 9-6" />
+//                   </svg>
+//                 </span>
+//                 <input
+//                   type="text"
+//                   value={email}
+//                   onChange={(e) => setEmail(e.target.value)}
+//                   placeholder="Enter Email Address or Institution Id"
+//                   className="w-full h-full pl-12 pr-4 text-[13px] outline-none transition focus:border-[#4BACCE]"
+//                   style={{
+//                     fontFamily: "Mulish, sans-serif",
+//                     fontWeight: 400,
+//                     border: "1px solid #E2E8F0",
+//                     borderRadius: "8px",
+//                     background: "white",
+//                     color: "#2D3748",
+//                   }}
+//                 />
+//               </div>
+//             </div>
+
+//             {/* Password */}
+//             <div className="mb-3">
+//               <label
+//                 className="text-[14px] font-semibold text-[#265768] mb-2 block"
+//                 style={{
+//                   fontFamily: "Mulish, sans-serif",
+//                   fontWeight: 600,
+//                   textAlign: "left",
+//                 }}
+//               >
+//                 Password*
+//               </label>
+//               <div
+//                 className="relative"
+//                 style={{
+//                   height: "48px",
+//                 }}
+//               >
+//                 <span
+//                   className="absolute left-4 top-1/2 -translate-y-1/2"
+//                   style={{
+//                     width: "20px",
+//                     height: "20px",
+//                     color: "#A0AEC0",
+//                   }}
+//                 >
+//                   <svg
+//                     width="20"
+//                     height="20"
+//                     viewBox="0 0 24 24"
+//                     fill="none"
+//                     stroke="currentColor"
+//                     strokeWidth="2"
+//                   >
+//                     <rect x="5" y="11" width="14" height="10" rx="2" />
+//                     <path d="M7 11V7a5 5 0 0110 0v4" />
+//                   </svg>
+//                 </span>
+//                 <input
+//                   type={showPassword ? "text" : "password"}
+//                   value={password}
+//                   onChange={(e) => setPassword(e.target.value)}
+//                   placeholder="••••••••••••"
+//                   className="w-full h-full pl-12 pr-12 text-[13px] outline-none transition focus:border-[#4BACCE]"
+//                   style={{
+//                     fontFamily: "Mulish, sans-serif",
+//                     fontWeight: 400,
+//                     border: "1px solid #E2E8F0",
+//                     borderRadius: "8px",
+//                     background: "white",
+//                     color: "#2D3748",
+//                   }}
+//                 />
+//                 <button
+//                   onClick={() => setShowPassword(!showPassword)}
+//                   type="button"
+//                   className="absolute right-4 top-1/2 -translate-y-1/2 hover:opacity-70 transition"
+//                   style={{
+//                     color: "#A0AEC0",
+//                   }}
+//                 >
+//                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+//                 </button>
+//               </div>
+//             </div>
+
+//             <div className="text-right mb-4">
+//               <a
+//                 href="#"
+//                 className="text-[13px] text-[#4BACCE] hover:underline"
+//                 style={{
+//                   fontFamily: "Mulish, sans-serif",
+//                 }}
+//               >
+//                 Forgot Password?
+//               </a>
+//             </div>
+
+//             <div className="text-center mb-8">
+//               <p
+//                 className="text-[13px] text-[#7A8C94] mb-4"
+//                 style={{
+//                   fontFamily: "Mulish, sans-serif",
+//                 }}
+//               >
+//                 New user ?{" "}
+//                 <a
+//                   href="#"
+//                   className="text-[#4BACCE] hover:underline font-semibold"
+//                 >
+//                   Sign Up
+//                 </a>
+//               </p>
+//               <button
+//                 onClick={handleSubmit}
+//                 className="w-full text-white py-3 text-[15px] font-semibold hover:opacity-90 transition"
+//                 style={{
+//                   height: "48px",
+//                   borderRadius: "8px",
+//                   background:
+//                     "linear-gradient(135deg, #4BACCE 0%, #265768 100%)",
+//                   boxShadow: "0 4px 14px 0 rgba(75, 172, 206, 0.3)",
+//                   fontFamily: "Mulish, sans-serif",
+//                 }}
+//               >
+//                 Sign In
+//               </button>
+//             </div>
+
+//             <div
+//               className="text-center text-[11px] text-[#A0AEC0]"
+//               style={{
+//                 fontFamily: "Mulish, sans-serif",
+//               }}
+//             >
+//               Copyright : Ezey. All Right Reserved.
+//               <div className="mt-2">
+//                 <a href="#" className="text-[#4BACCE] hover:underline">
+//                   Terms & Conditions
+//                 </a>
+//                 <span className="text-[#CBD5E0] mx-1">|</span>
+//                 <a href="#" className="text-[#4BACCE] hover:underline">
+//                   Privacy Policy
+//                 </a>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* ================= RIGHT CARD (SLIDER) ================= */}
+//         <div
+//           className="relative rounded-2xl overflow-hidden shadow-xl flex items-center justify-center"
+//           style={{
+//             backgroundImage:
+//               "url('/rightbg.jpg')",
+//             backgroundSize: "cover",
+//             backgroundPosition: "center",
+//           }}
+//         >
+//           {/* Dark overlay for readability */}
+//           <div className="absolute inset-0 bg-black/40" />
+
+//           {slides.map((slide, index) => (
+//             <div
+//               key={index}
+//               className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-1000 ${
+//                 currentSlide === index ? "opacity-100" : "opacity-0"
+//               }`}
+//             >
+//               {/* Images */}
+//               <div className="relative w-96 h-96 mb-8">
+//                 {/* ===== SLIDE 1 : 3 IMAGES ===== */}
+//                 {index === 0 && (
+//                   <>
+//                     {/* Top */}
+//                     <img
+//                       src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+//                       className="absolute top-0 right-6 w-44 h-44 object-cover rounded-2xl shadow-xl border-8 border-white rotate-6"
+//                     />
+
+//                     {/* Center */}
+//                     <img
+//                       src="https://images.unsplash.com/photo-1531482615713-2afd69097998"
+//                       className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 object-cover rounded-2xl shadow-2xl border-8 border-white"
+//                     />
+
+//                     {/* Bottom */}
+//                     <img
+//                       src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+//                       className="absolute bottom-0 left-6 w-44 h-44 object-cover rounded-2xl shadow-xl border-8 border-white -rotate-6"
+//                     />
+//                   </>
+//                 )}
+
+//                 {/* ===== SLIDE 2 & 3 : SINGLE IMAGE ===== */}
+//                 {index !== 0 && (
+//                   <img
+//                     src={
+//                       index === 1
+//                         ? "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+//                         : "https://images.unsplash.com/photo-1506784983877-45594efa4cbe"
+//                     }
+//                     className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 object-cover rounded-2xl shadow-2xl border-8 border-white"
+//                   />
+//                 )}
+//               </div>
+
+//               {/* Text */}
+//               <p className="text-white text-xl text-center max-w-md px-6 relative z-10">
+//                 "{slide.text}"
+//               </p>
+//             </div>
+//           ))}
+
+//           {/* Indicators */}
+//           <div className="absolute bottom-6 flex gap-2 z-10">
+//             {slides.map((_, i) => (
+//               <button
+//                 key={i}
+//                 onClick={() => setCurrentSlide(i)}
+//                 className={`h-2 rounded-full transition-all ${
+//                   currentSlide === i ? "w-8 bg-white" : "w-2 bg-white/50"
+//                 }`}
+//               />
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default EzeyLoginPage;

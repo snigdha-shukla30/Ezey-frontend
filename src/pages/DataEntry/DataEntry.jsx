@@ -10,7 +10,7 @@ import Constraints from "../../Components/DataEntry/Constraints";
 import { Search } from "lucide-react";
 
 // ✅ API import
-import { getClassrooms } from "../../api/api";
+// import { getClassrooms } from "../../api/api";
 
 const DataEntry = () => {
   const [activeMenu, setActiveMenu] = useState("data-entry");
