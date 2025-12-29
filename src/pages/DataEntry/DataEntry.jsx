@@ -1,7 +1,7 @@
 // src/pages/DataEntry/DataEntry.jsx
 import React, { useState, useEffect } from "react";
-import Sidebar from "../../components/Dashboard/Sidebar";
-import Header from "../../components/Dashboard/Header";
+import Sidebar from "../../Components/ui/Sidebar";
+import Header from "../../Components/ui/Header";
 import ClassroomData from "../../Components/DataEntry/ClassroomData";
 import Batches from "../../Components/DataEntry/Batches";
 import Subjects from "../../Components/DataEntry/Subjects";

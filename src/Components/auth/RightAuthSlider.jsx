@@ -40,7 +40,7 @@ const RightAuthSlider = () => {
             currentSlide === index ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="relative w-96 h-96 mb-8">
+          <div className="relative w-100 h-100 mb-8">
             {index === 0 && (
               <>
                 <img

@@ -21,15 +21,15 @@ export const signupAPI = async (payload) => {
   return res.json();
 };
 
-// export const forgotPasswordAPI = async (payload) => {
-//   const res = await fetch(`${BASE_URL}/auth/forgot-password`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(payload),
-//   });
+export const forgotPasswordAPI = async (payload) => {
+  const res = await fetch(`${BASE_URL}/auth/forgot-password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
-//   return res.json();
-// };
+  return res.json();
+};
 
 
 

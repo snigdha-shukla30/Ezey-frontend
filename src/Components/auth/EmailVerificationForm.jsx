@@ -1,39 +1,11 @@
 import React, { useState } from "react";
 import { Mail } from "lucide-react";
-import { forgotPasswordAPI } from "../../api/api"; 
 
-const ForgotPasswordForm = () => {
+const EmailVerificationForm = () => {
   const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {
-    if (!email) {
-      alert("Please enter your email");
-      return;
-    }
-
-    try {
-      setLoading(true);
-
-      const payload = {
-        email: email,
-      };
-
-      const response = await forgotPasswordAPI(payload);
-
-      console.log("Forgot Password Response:", response);
-
-      if (response.success) {
-        alert("Reset link sent to your email");
-      } else {
-        alert(response.message || "Something went wrong");
-      }
-    } catch (error) {
-      console.error("Forgot Password Error:", error);
-      alert("Server error. Please try again later.");
-    } finally {
-      setLoading(false);
-    }
+  const handleSubmit = () => {
+    console.log("Send verification link to:", email);
   };
 
   return (
@@ -52,7 +24,7 @@ const ForgotPasswordForm = () => {
             color: "#265768",
           }}
         >
-          Forgot Password
+          Email Verification
         </h1>
 
         <p
@@ -64,7 +36,8 @@ const ForgotPasswordForm = () => {
             color: "#7A8C94",
           }}
         >
-          Forgot password ? No issues we got your back .
+          We have sent you a verification link to your given gmail
+            please open your gmail to verify .
         </p>
       </div>
 
@@ -80,7 +53,7 @@ const ForgotPasswordForm = () => {
             color: "#265768",
           }}
         >
-          Email Address / Institution Id
+          Email Address 
         </label>
 
         <div className="relative">
@@ -110,7 +83,6 @@ const ForgotPasswordForm = () => {
       <div className="flex justify-center mb-6">
         <button
           onClick={handleSubmit}
-          disabled={loading}
           className="flex items-center justify-center w-[251px]"
           style={{
             height: "44px",
@@ -123,19 +95,13 @@ const ForgotPasswordForm = () => {
             color: "#FFFFFF",
             border: "none",
             cursor: "pointer",
-            opacity: loading ? 0.7 : 1,
           }}
         >
-          {loading ? "Sending..." : "Send reset link"}
+          Resend Link
         </button>
       </div>
     </>
   );
 };
 
-export default ForgotPasswordForm;
-
-
-
-
-
+export default EmailVerificationForm;
