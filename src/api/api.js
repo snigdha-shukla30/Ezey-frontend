@@ -1,5 +1,6 @@
 const BASE_URL = "https://ezzey-backend.onrender.com"; 
 
+
 export const loginAPI = async (payload) => {
   const res = await fetch(`${BASE_URL}/auth/login`, {
     method: "POST",
@@ -30,9 +31,20 @@ export const forgotPasswordAPI = async (payload) => {
   return res.json();
 };
 
-/* 🔥 DASHBOARD SUMMARY GET API */
-export const getDashboardSummaryAPI = async () => {
-  const token = localStorage.getItem("token"); // login ke baad store hoga
+export const emailVerificationAPI = async (token) => {
+  const res = await fetch(
+    `${BASE_URL}/auth/verify-email?token=${token}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return res.json();
+};
+
 
   const res = await fetch(`${BASE_URL}/dashboard/summary`, {
     method: "GET",

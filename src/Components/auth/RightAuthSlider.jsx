@@ -24,7 +24,7 @@ const RightAuthSlider = () => {
 
   return (
     <div
-      className="relative rounded-2xl overflow-hidden shadow-xl flex items-center justify-center"
+      className="relative w-full h-[650px] mt-4 rounded-2xl overflow-hidden shadow-xl flex items-center justify-center"
       style={{
         backgroundImage: "url('/rightbg.jpg')",
         backgroundSize: "cover",
@@ -40,32 +40,30 @@ const RightAuthSlider = () => {
             currentSlide === index ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="relative w-100 h-100 mb-8">
+          <div className="relative w-[360px] h-[400px] mb-8">
             {index === 0 && (
               <>
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
-                  className="absolute top-0 right-6 w-44 h-44 rounded-2xl border-8 border-white rotate-6 object-cover"
+                  src="/spects.jpg"
+                  className="absolute top-0 right-10 w-44 h-44 rounded-2xl border-8 border-[#599BAB]/50 object-cover"
                 />
+
                 <img
-                  src="https://images.unsplash.com/photo-1531482615713-2afd69097998"
-                  className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 rounded-2xl border-8 border-white object-cover"
+                  src="/watch.jpg"
+                  className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-2xl border-8 border-[#599BAB]/50 object-cover"
                 />
+
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
-                  className="absolute bottom-0 left-6 w-44 h-44 rounded-2xl border-8 border-white -rotate-6 object-cover"
+                  src="/copy.jpg"
+                  className="absolute bottom-0 left-6 w-44 h-44 rounded-2xl border-8 border-[#599BAB]/50 object-cover"
                 />
               </>
             )}
 
             {index !== 0 && (
               <img
-                src={
-                  index === 1
-                    ? "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
-                    : "https://images.unsplash.com/photo-1506784983877-45594efa4cbe"
-                }
-                className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-2xl border-8 border-white object-cover"
+                src={index === 1 ? "/ezeyteam.jpg" : "/timer.jpg"}
+                className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-2xl border-8 border-[#599BAB]/50 object-cover"
               />
             )}
           </div>
@@ -92,3 +90,6 @@ const RightAuthSlider = () => {
 };
 
 export default RightAuthSlider;
+
+
+

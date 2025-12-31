@@ -8,17 +8,13 @@ const GenerateTimetablePage = () => {
 
   return (
     <div className="min-h-screen bg-[#F1F5F9] flex">
-      {/* Sidebar */}
       <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col px-6 pt-4">
-        {/* Header */}
-        <div className="bg-white rounded-[12px] px-6 py-4 shadow-sm mb-5 flex items-center">
+        <div className="bg-white rounded-[12px] px-6 py-4 shadow-sm mb-5">
           <Header />
         </div>
 
-        {/* Page Content */}
         <TimetableContent />
       </div>
     </div>
@@ -26,6 +22,46 @@ const GenerateTimetablePage = () => {
 };
 
 export default GenerateTimetablePage;
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from "react";
+// import  Sidebar  from "../../Components/ui/Sidebar";
+// import  Header  from "../../Components/ui/Header";
+// import { TimetableContent } from "../../Components/timetable/GenerateTT";
+
+// const GenerateTimetablePage = () => {
+//   const [activeMenu, setActiveMenu] = useState("timetable");
+
+//   return (
+//     <div className="min-h-screen bg-[#F1F5F9] flex">
+//       {/* Sidebar */}
+//       <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+
+//       {/* Main Content */}
+//       <div className="flex-1 flex flex-col px-6 pt-4">
+//         {/* Header */}
+//         <div className="bg-white rounded-[12px] px-6 py-4 shadow-sm mb-5 flex items-center">
+//           <Header />
+//         </div>
+
+//         {/* Page Content */}
+//         <TimetableContent />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GenerateTimetablePage;
 
 
 

@@ -2,17 +2,17 @@ import React from "react";
 
 const LeftAuthBox = ({ children }) => {
   return (
-    <div className="relative w-[540px] rounded-[10px] p-[1px] bg-gradient-to-b from-[rgba(38,87,104,0.5)] to-[rgba(75,172,206,0.5)]">
+    <div className="relative w-[540px] h-[650px] mt-4 rounded-[10px] p-[1px] bg-gradient-to-b from-[rgba(38,87,104,0.5)] to-[rgba(75,172,206,0.5)]">
       
-      {/* ===== INNER BOX ===== */}
-      <div className="bg-[#F8F8F8] rounded-[9px] p-8 flex flex-col justify-between h-full">
+      
+      <div className="bg-[#F8F8F8] rounded-[9px] p-6 flex flex-col justify-between h-full ">
         
-        {/* ===== CONTENT AREA ===== */}
+        
         <div className="w-full max-w-md mx-auto">
           {children}
         </div>
 
-        {/* ===== FOOTER (ONE LINE) ===== */}
+        
         <div className="mt-4 flex items-center justify-between text-[11px] text-[#A0AEC0]">
           <span>
             Copyright : Ezey. All Right Reserved.

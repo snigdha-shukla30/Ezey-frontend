@@ -14,6 +14,7 @@ import EzeySignupPage from "./pages/Auth/Signup";
 import EzeyLoginPage from "./pages/Auth/Login";
 import EzeyForgotPasswordPage from "./pages/Auth/ForgetPassword";
 import EmailVerificationPage from "./pages/Auth/EmailVerification";
+import EmailVerifiedPage from "./pages/Auth/EmailVerified";
 import GenerateTimetablePage from "./pages/GenerateTT/generate";
 
 
@@ -33,7 +34,9 @@ function App() {
         <Route path="/import" element={< ImportSummary />} /> 
         {/* <Route path="/dashboard" element={< Dashboard />} />  */}
         <Route path="/dataentry" element={< DataEntry />} />
-        <Route path="/generate" element={< GenerateTimetablePage />} /> 
+        <Route path="/generate" element={< GenerateTimetablePage />} />
+        <Route path="/verified" element={< EmailVerifiedPage />} /> 
+
 
       </Routes>
     </Router>
