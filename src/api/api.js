@@ -1,5 +1,5 @@
 const BASE_URL = "https://ezzey-backend.onrender.com"; 
-// ↑ yaha apna backend URL dalna
+
 
 export const loginAPI = async (payload) => {
   const res = await fetch(`${BASE_URL}/auth/login`, {
@@ -27,6 +27,20 @@ export const forgotPasswordAPI = async (payload) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
+
+  return res.json();
+};
+
+export const emailVerificationAPI = async (token) => {
+  const res = await fetch(
+    `${BASE_URL}/auth/verify-email?token=${token}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   return res.json();
 };
