@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import  Sidebar  from "../../Components/ui/Sidebar";
-import  Header  from "../../Components/ui/Header";
+import  Sidebar  from "../../Components/Dashboard/SideBar";
+import  Header  from "../../Components/Dashboard/Header";
 import { TimetableContent } from "../../Components/timetable/GenerateTT";
 
 const GenerateTimetablePage = () => {

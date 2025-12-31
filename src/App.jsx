@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 import Splash from "./pages/Splash/splash";
-
+import Dashboard from "./pages/Dashboard/Dashboard";
 import ImportSummary from "./pages/ImportSummary/ImportSummary";
 import EzeyForm from "./pages/DataFilling/EzeyForm";
 import DataEntry from "./pages/DataEntry/DataEntry";
@@ -29,6 +29,7 @@ function App() {
         <Route path="/verification" element={<EmailVerificationPage />} />
         <Route path="/form" element={< EzeyForm />} /> 
         <Route path="/splash" element={<Splash />} />
+        <Route path="/dashboard" element={< Dashboard />} />
         <Route path="/import" element={< ImportSummary />} /> 
         {/* <Route path="/dashboard" element={< Dashboard />} />  */}
         <Route path="/dataentry" element={< DataEntry />} />
