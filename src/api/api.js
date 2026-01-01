@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5001";
+const BASE_URL = "https://ezzey-backend.onrender.com";
 
 // Helper function to handle unauthorized responses
 const handleUnauthorized = (res) => {

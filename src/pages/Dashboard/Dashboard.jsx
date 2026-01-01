@@ -16,22 +16,17 @@ const Dashboard = () => {
 
   
 
-
-   useEffect(() => {
+  useEffect(() => {
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
 
       const res = await dashboardSummaryAPI();
 
-
-      if (res?.success) {
-        setDashboardData(res.data);
-      } else {
-        setError(res?.message || "Failed to load dashboard");
-      }
+      setDashboardData(res.data ?? res);
     } catch (err) {
-      setError("Something went wrong");
+
+      setError(err.message || "Failed to load dashboard");
     } finally {
       setLoading(false);
     }
@@ -39,6 +34,8 @@ const Dashboard = () => {
 
   fetchDashboardData();
 }, []);
+
+
 
 
   const stats = dashboardData
