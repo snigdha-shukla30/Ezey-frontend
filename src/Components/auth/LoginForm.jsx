@@ -21,20 +21,17 @@ const LoginForm = () => {
     
     setLoading(true);
     try {
-      const res = await loginAPI({ email, password });
+      const res = await loginAPI(email, password);
 
       if (res.success) {
-        
-        localStorage.setItem("user", JSON.stringify(res.user)); 
         alert("Login successful");
-        
         navigate("/dashboard");
       } else {
         alert(res.message || "Login failed");
       }
     } catch (error) {
       console.error(error);
-      alert("Something went wrong");
+      alert(error.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
