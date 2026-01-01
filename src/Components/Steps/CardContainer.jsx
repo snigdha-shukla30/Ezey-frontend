@@ -17,22 +17,3 @@ export const CardContainer = ({ children, title }) => {
 
 
 
-
-
-
-// import React from 'react';
-
-// export const CardContainer = ({ children, title }) => {
-//   return (
-//     <div className="flex-1 flex items-center justify-center px-8">
-//       <div className="w-full max-w-2xl bg-white rounded-lg shadow-2xl p-12">
-//         {title && (
-//           <p className="text-center text-cyan-700 mb-10 text-lg leading-relaxed">
-//             {title}
-//           </p>
-//         )}
-//         {children}
-//       </div>
-//     </div>
-//   );
-// };
