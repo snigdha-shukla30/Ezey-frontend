@@ -37,7 +37,7 @@ export const ERPConnectionScreen = ({ onNext }) => {
         </div>
 
         <div className="flex justify-center">
-          <Button onClick={onNext} className=" mr-40 bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 text-white font-medium py-3 px-8 rounded-md shadow-md transition-all duration-200">
+          <Button onClick={onNext} className=" mr-40 bg-linear-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 text-white font-medium py-3 px-8 rounded-md shadow-md transition-all duration-200">
             Connect ERP
           </Button>
         </div>

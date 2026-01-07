@@ -136,12 +136,12 @@ const SignupForm = () => {
 
      
       <div className="mb-6 ml-33">
-        <div className="relative w-[160px]">
+        <div className="relative w-40">
           <User className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A0AEC0] w-4 h-4" />
           <select
             value={accountType}
             onChange={(e) => setAccountType(e.target.value)}
-            className="w-full h-[40px] pl-10 pr-5 rounded-[10px] border-[1.5px] border-[#DFDFDF] text-[13px] text-[#7A8C94]"
+            className="w-full h-10 pl-10 pr-5 rounded-[10px] border-[1.5px] border-[#DFDFDF] text-[13px] text-[#7A8C94]"
           >
             <option value="">Account Type</option>
             <option value="student">Student</option>
