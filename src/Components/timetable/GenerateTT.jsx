@@ -1,0 +1,187 @@
+import React, { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+export const TimetableContent = () => {
+  // 🔹 Default generate screen (blank form)
+  const [activeTab, setActiveTab] = useState("generate");
+
+  // 🔹 Generate hone ke baad hi true hoga
+  const [isGenerated, setIsGenerated] = useState(false);
+
+  return (
+    <div className="bg-white rounded-lg border border-[#E5E7EB] p-6">
+      {/* ================= Header ================= */}
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-2xl font-semibold text-[#1F2937] mb-1">
+            View / Edit generated schedules
+          </h1>
+          <p className="text-sm text-[#6B7280]">
+            View all existing timetables, update details, or regenerate schedules
+            with new constraints.
+          </p>
+        </div>
+
+        <div className="text-right">
+          <div className="text-xs text-[#6B7280] mb-1">ERP Last Sync:</div>
+          <div className="text-xs text-[#374151] mb-2">
+            Last synced at 12:40 PM
+          </div>
+          <button className="px-4 py-1.5 bg-[#0891B2] text-white text-xs rounded-md">
+            Sync ⟳
+          </button>
+        </div>
+      </div>
+
+      {/* ================= Tabs ================= */}
+      <div className="flex gap-4 border-b border-[#E5E7EB] mb-6">
+        <button
+          onClick={() => {
+            setActiveTab("generate");
+            setIsGenerated(false); // 🔹 reset
+          }}
+          className={`pb-3 px-2 text-sm font-medium relative ${
+            activeTab === "generate"
+              ? "text-[#0891B2]"
+              : "text-[#6B7280]"
+          }`}
+        >
+          Generate Timetable
+          {activeTab === "generate" && (
+            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0891B2]" />
+          )}
+        </button>
+
+        <button
+          onClick={() => setActiveTab("preview")}
+          className={`pb-3 px-2 text-sm font-medium relative ${
+            activeTab === "preview"
+              ? "text-[#0891B2]"
+              : "text-[#6B7280]"
+          }`}
+        >
+          Preview Timetable
+          {activeTab === "preview" && (
+            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0891B2]" />
+          )}
+        </button>
+      </div>
+
+      {/* ================================================= */}
+      {/* =============== GENERATE TAB =================== */}
+      {/* ================================================= */}
+      {activeTab === "generate" && (
+        <>
+          {/* ---------- Filters (UI SAME) ---------- */}
+          <div className="grid grid-cols-4 gap-4 mb-6">
+            {["Course", "Department", "Semester", "Section"].map((label) => (
+              <div key={label}>
+                <label className="block text-sm font-medium text-[#374151] mb-2">
+                  {label}
+                </label>
+                <div className="relative">
+                  <select className="w-full px-4 py-2.5 bg-white border border-[#D1D5DB] rounded-lg text-sm text-[#6B7280] appearance-none">
+                    <option>Default</option>
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B7280]"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ---------- Generate Button ---------- */}
+          <div className="flex justify-end mb-6">
+            <button
+              onClick={() => setIsGenerated(true)}
+              className="px-6 py-2.5 bg-[#0891B2] text-white text-sm font-medium rounded-lg"
+            >
+              Generate Timetable
+            </button>
+          </div>
+
+          {/* ---------- Scheduling Modes (AFTER GENERATE) ---------- */}
+          {isGenerated && (
+            <div className="border rounded-lg p-6">
+              <div className="flex justify-between mb-4">
+                <h3 className="text-sm font-semibold text-[#0F566B]">
+                  Scheduling Modes
+                </h3>
+                <span className="text-sm text-[#0F566B]">
+                  Preview Timetable
+                </span>
+              </div>
+
+              <div className="border-t">
+                <div className="flex justify-between py-4 border-b">
+                  <span className="text-sm text-[#6B7280]">Balanced</span>
+                  <span>📅</span>
+                </div>
+                <div className="flex justify-between py-4 border-b">
+                  <span className="text-sm text-[#6B7280]">
+                    Room Optimized
+                  </span>
+                  <span>📅</span>
+                </div>
+                <div className="flex justify-between py-4">
+                  <span className="text-sm text-[#6B7280]">
+                    Faculty Efficient
+                  </span>
+                  <span>📅</span>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ================================================= */}
+      {/* =============== PREVIEW TAB ==================== */}
+      {/* ================================================= */}
+      {activeTab === "preview" && (
+        <div className="border rounded-lg p-4">
+          <table className="w-full text-sm">
+            <thead className="border-b text-[#6B7280]">
+              <tr>
+                <th className="text-left py-2">Degree / Course</th>
+                <th>Department</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <th>Preview</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td>B.Tech</td>
+                <td>CSE</td>
+                <td>1</td>
+                <td>A</td>
+                <td>📅</td>
+              </tr>
+              <tr className="border-b">
+                <td>BCA</td>
+                <td>CSE</td>
+                <td>5</td>
+                <td>B</td>
+                <td>📅</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
