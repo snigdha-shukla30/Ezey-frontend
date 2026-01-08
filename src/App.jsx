@@ -16,6 +16,9 @@ import EzeyForgotPasswordPage from "./pages/Auth/ForgetPassword";
 import EmailVerificationPage from "./pages/Auth/EmailVerification";
 import EmailVerifiedPage from "./pages/Auth/EmailVerified";
 import GenerateTimetablePage from "./pages/GenerateTT/generate";
+import { ManualEntryScreen } from "./pages/ManualEntryScreen/ManualEntryScreen";
+import {QuickAddFacultyScreen} from "./pages/ManualEntryScreen/QuickAddFacultyScreen";
+
 
 
 
@@ -36,6 +39,8 @@ function App() {
         <Route path="/dataentry" element={< DataEntry />} />
         <Route path="/generate" element={< GenerateTimetablePage />} />
         <Route path="/verified" element={< EmailVerifiedPage />} /> 
+        <Route path="/ManualEntryScreen" element={<ManualEntryScreen />} />
+        <Route path="/QuickAddFacultyScreen" element={<QuickAddFacultyScreen />} />
 
 
       </Routes>

@@ -24,14 +24,14 @@ export default function Batches({ searchQuery }) {
     >
       {/* Header row (exact figma) */}
       <div className="flex items-center border-b border-[#DFDFDF] px-6 py-3 bg-gray-50">
-        <div className="w-[140px]"><span className="text-sm font-medium text-gray-700">Degree / Course</span></div>
-        <div className="w-[120px]"><span className="text-sm font-medium text-gray-700">Batch code</span></div>
-        <div className="w-[160px]"><span className="text-sm font-medium text-gray-700">Department</span></div>
-        <div className="w-[90px]"><span className="text-sm font-medium text-gray-700">Capacity</span></div>
-        <div className="w-[90px]"><span className="text-sm font-medium text-gray-700">Semester</span></div>
-        <div className="w-[90px]"><span className="text-sm font-medium text-gray-700">Section</span></div>
+        <div className="w-36"><span className="text-sm font-medium text-gray-700">Degree / Course</span></div>
+        <div className="w-32"><span className="text-sm font-medium text-gray-700">Batch code</span></div>
+        <div className="w-40"><span className="text-sm font-medium text-gray-700">Department</span></div>
+        <div className="w-24"><span className="text-sm font-medium text-gray-700">Capacity</span></div>
+        <div className="w-24"><span className="text-sm font-medium text-gray-700">Semester</span></div>
+        <div className="w-24"><span className="text-sm font-medium text-gray-700">Section</span></div>
         <div className="flex-1"><span className="text-sm font-medium text-gray-700">Assigned Subjects</span></div>
-        <div className="w-[100px] text-center"><span className="text-sm font-medium text-gray-700">Actions</span></div>
+        <div className="w-24 text-center"><span className="text-sm font-medium text-gray-700">Actions</span></div>
       </div>
 
       {/* Data rows */}
@@ -41,12 +41,12 @@ export default function Batches({ searchQuery }) {
             key={idx}
             className="flex items-center px-5 py-3.5 border-b border-gray-100 hover:bg-gray-50 transition"
           >
-            <div className="w-[140px] text-sm font-medium text-gray-900">{item.course}</div>
-            <div className="w-[120px] text-sm text-gray-900">{item.batchCode}</div>
-            <div className="w-[160px] text-sm text-gray-900 truncate">{item.department}</div>
-            <div className="w-[90px] text-sm text-gray-900">{item.capacity}</div>
-            <div className="w-[90px] text-sm text-gray-900">{item.semester}</div>
-            <div className="w-[90px] text-sm text-gray-900">{item.section}</div>
+            <div className="w-36 text-sm font-medium text-gray-900">{item.course}</div>
+            <div className="w-32 text-sm text-gray-900">{item.batchCode}</div>
+            <div className="w-40 text-sm text-gray-900 truncate">{item.department}</div>
+            <div className="w-24 text-sm text-gray-900">{item.capacity}</div>
+            <div className="w-24 text-sm text-gray-900">{item.semester}</div>
+            <div className="w-24 text-sm text-gray-900">{item.section}</div>
 
             {/* Subjects – figma clickable */}
             <div className="flex-1 text-sm text-[#2563EB] cursor-pointer hover:underline">
@@ -54,7 +54,7 @@ export default function Batches({ searchQuery }) {
             </div>
 
             {/* Actions icons – same as figma */}
-            <div className="w-[100px] flex items-center justify-center gap-3">
+            <div className="w-24 flex items-center justify-center gap-3">
               <button className="text-gray-400 hover:text-blue-600 transition"><Edit2 size={17} /></button>
               <button className="text-gray-400 hover:text-red-600 transition"><Trash2 size={17} /></button>
             </div>
