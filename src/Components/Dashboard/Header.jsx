@@ -41,11 +41,15 @@ const Header = () => {
 
       {/* Right side */}
       <div className="flex items-center gap-4">
-        <button className="w-9 h-9 rounded-full bg-white border border-[#BFBFBF] flex items-center justify-center">
+        <button 
+          className="w-9 h-9 rounded-full bg-white border border-[#BFBFBF] flex items-center justify-center transition-shadow duration-300 hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)]"
+        >
           <Mail size={16} className="text-[#4B5C73]" />
         </button>
 
-        <button className="relative w-9 h-9 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center">
+        <button 
+          className="relative w-9 h-9 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center transition-shadow duration-300 hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)]"
+        >
           <Bell size={16} className="text-[#4B5C73]" />
           <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#EF4444]" />
         </button>

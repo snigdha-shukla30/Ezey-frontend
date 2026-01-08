@@ -57,7 +57,34 @@ const Dashboard = () => {
         },
       ]
     : [
+<<<<<<< HEAD
         
+=======
+        {
+          label: "Classroom",
+          count: 45,
+          imageUrl:
+            "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          label: "Subjects",
+          count: 78,
+          imageUrl:
+            "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          label: "Faculty",
+          count: 34,
+          imageUrl:
+            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          label: "Time Tables",
+          count: 8,
+          imageUrl:
+            "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=800&q=80",
+        },
+>>>>>>> 92f295898dbe6da5dccc826911470f84be51c9c3
       ];
 
   return (
@@ -137,6 +164,7 @@ const Dashboard = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Dashboard;
 
 
@@ -423,3 +451,6 @@ export default Dashboard;
 
 // export default Dashboard;
 
+=======
+export default Dashboard;
+>>>>>>> 92f295898dbe6da5dccc826911470f84be51c9c3
