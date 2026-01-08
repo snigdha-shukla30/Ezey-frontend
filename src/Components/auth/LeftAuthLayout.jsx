@@ -13,7 +13,7 @@ const LeftAuthBox = ({ children }) => {
         </div>
 
         
-        <div className="mt-4 flex items-center justify-between text-[11px] text-[#A0AEC0]">
+        <div className="mt-4 flex items-center justify-between text-[11px] text-[#265768]/50">
           <span>
             Copyright : Ezey. All Right Reserved.
           </span>

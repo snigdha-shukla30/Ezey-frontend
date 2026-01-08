@@ -40,11 +40,11 @@ const ForgotPasswordForm = () => {
   return (
     <>
       
-      <div className="mb-8 text-center">
+      <div className="mb-8 text-center justify-center align-center ">
         <p className="text-md text-[#4A9FB5] text-left mb-8">Ezey</p>
 
         <h1
-          className="mb-3"
+          className="mb-3 mt-30"
           style={{
             fontFamily: "Georgia, serif",
             fontWeight: 700,
@@ -97,6 +97,7 @@ const ForgotPasswordForm = () => {
 };
 
 export default ForgotPasswordForm;
+
 
 
 

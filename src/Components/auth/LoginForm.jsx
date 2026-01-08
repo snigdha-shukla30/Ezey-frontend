@@ -74,7 +74,7 @@ const LoginForm = () => {
         />
       </div>
 
-      <div className="mb-2 mt-10">
+      <div className="mb-2 mt-3">
         <InputField
           width="450px"
           height="42px"
@@ -89,7 +89,7 @@ const LoginForm = () => {
         />
       </div>
 
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-6 mt-15">
         <Button
           variant="primary"
           onClick={handleSubmit}

@@ -1,4 +1,5 @@
-const BASE_URL = "https://ezzey-backend.onrender.com";
+import axios from "axios";
+const BASE_URL = "http://localhost:5000";
 
 // Helper function to handle unauthorized responses
 const handleUnauthorized = (res) => {
@@ -81,3 +82,23 @@ export const dashboardSummaryAPI = async () => {
   return res.json();
 };
 
+export const generateTimetable = async (batchId) => {
+  console.log("🚀 generateTimetable called with:", batchId);
+  const response = await axios.post(
+    `${BASE_URL}/timetable/generate`,
+    { batchId },
+    {
+      withCredentials: true, // 🔥 IMPORTANT
+    }
+  );
+  console.log("✅ API response received:", response);
+  return response.data;
+};
+
+export const getTimetableById = async (timetableId) => {
+  const res = await axios.get(
+    `http://localhost:5000/timetable/${timetableId}`,
+    { withCredentials: true }
+  );
+  return res.data;
+};

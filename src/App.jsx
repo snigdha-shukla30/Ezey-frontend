@@ -16,7 +16,9 @@ import EzeyForgotPasswordPage from "./pages/Auth/ForgetPassword";
 import EmailVerificationPage from "./pages/Auth/EmailVerification";
 import EmailVerifiedPage from "./pages/Auth/EmailVerified";
 import GenerateTimetablePage from "./pages/GenerateTT/generate";
-
+import BalancedTimeTablePage from "./pages/TimeTable/BalancedTT";
+// import FacultyOptimizedTimeTablePage from "./pages/TimeTable/FacultyOptimizedTT";
+// import RoomOptimizedTimeTablePage from "./pages/TimeTable/RoomOptimizedTT";
 
 
 function App() {
@@ -35,9 +37,14 @@ function App() {
         {/* <Route path="/dashboard" element={< Dashboard />} />  */}
         <Route path="/dataentry" element={< DataEntry />} />
         <Route path="/generate" element={< GenerateTimetablePage />} />
+         <Route
+        path="/timetable/preview/:batchId"
+        element={<BalancedTimeTablePage />}
+       />
+        {/* <Route path="/timetable/preview/:timetableId" element={< BalancedTimeTablePage />} /> */}
+        {/* <Route path="/facultyTT" element={< FacultyOptimizedTimeTablePage />} />
+        <Route path="/roomTT" element={< RoomOptimizedTimeTablePage />} /> */}
         <Route path="/verified" element={< EmailVerifiedPage />} /> 
-
-
       </Routes>
     </Router>
   );
